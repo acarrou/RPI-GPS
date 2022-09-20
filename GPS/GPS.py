@@ -1,5 +1,6 @@
 import serial
 import math
+
 class gpsRead:
     def __init__(self, port, baudrate):
         self.gps_port = serial.Serial(port, baudrate)
@@ -14,7 +15,7 @@ class gpsRead:
                     if d[2] == '' or d[4] == '':
                         return ["None", "None"]
                     else:
-                       	lat = float(d[2]) / 100
+                        lat = float(d[2]) / 100
                         long = float(d[4]) / 100
                         lat = math.modf(lat)
                         long = math.modf(long)
@@ -22,8 +23,4 @@ class gpsRead:
                         long = long[1]+(long[0]*100)/60
                         return [lat, -long]
         except:
-            return ['error','error']
-
-
-    
-
+            return ['error', 'error']
